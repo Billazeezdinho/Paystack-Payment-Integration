@@ -64,9 +64,9 @@ exports.verifyPayment = async (req, res)=>{
             })
         }else{
             console.log('payment Failed')
-            const payment = await transactionModel.findOneAndUpdate({reference}, {status: 'Failed'}, {new: true});
-            return res.status(404).json({
-                message: "Payment Failed"
+            const payment = await transactionModel.findOneAndUpdate({reference}, {status: 'failed'}, {new: true});
+            return res.status(200).json({
+                message: "Payment Verification Failed"
             })
         }
         
